@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:maksap/sharepref/user_share_pref.dart';
 
 import 'home.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -17,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool otpVisibility = false;
 
   String verificationID = "";
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: phoneController,
               decoration: InputDecoration(
-                hintText: 'Phone Number',
+                hintText: '0992705340 مثلا',
                 prefix: Padding(
                   padding: EdgeInsets.all(4),
-                  child: Text('+249'),
+                  //child: Text('+249'),
                 ),
               ),
               maxLength: 10,
@@ -69,14 +73,27 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.indigo[900],
               onPressed: () {
                 if (otpVisibility) {
+                  setState(() {
+                    _isLoading = true;
+                  });
                   verifyOTP();
+                   setState(() {
+                    _isLoading = true;
+                  });
                 } else {
+                   setState(() {
+                    _isLoading = true;
+                  });
                   loginWithPhone();
+                   setState(() {
+                    _isLoading = true;
+                  });
                 }
               },
-              child: Text(
+              child:_isLoading?const Center(child:  CircularProgressIndicator(                  color: Colors.white,
+)): Text(
                 otpVisibility ? "Verify" : "Login",
-                style: TextStyle(
+                style:const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                 ),
@@ -127,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
     ).whenComplete(
       () {
+        SharedPrefUser().login();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
