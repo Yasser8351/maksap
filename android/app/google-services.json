@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977653568591",
+    "project_id": "maksap-41d4e",
+    "storage_bucket": "maksap-41d4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977653568591:android:4e6d1cf43c40d49d01863a",
+        "android_client_info": {
+          "package_name": "com.maksap.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977653568591-0mupt85d42oq9moq0aop2quf7nmg4kao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSeX7o7cEzB6vAXbPH0h78HzsxGPu4CMM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977653568591-0mupt85d42oq9moq0aop2quf7nmg4kao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
