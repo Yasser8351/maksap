@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:maksap/view/login.dart';
 
+import 'google_map_screen.dart';
 import 'home.dart';
 
-class SplashScreenPage extends StatefulWidget {
-  const SplashScreenPage({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenPageState createState() => _SplashScreenPageState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenPageState extends State<SplashScreenPage>
+class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   @override
   void initState() {
@@ -45,7 +46,7 @@ class _SplashScreenPageState extends State<SplashScreenPage>
             EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.10),
         child: EasySplashScreen(
           durationInSeconds: 3,
-          navigator: userStatus ? Home() : const LoginScreen(),
+          navigator: userStatus ?const GoogleMapScreen() : const LoginScreen(),
           logo: Image.asset(
             'assets/images/markeruser.png',
             fit: BoxFit.fill,

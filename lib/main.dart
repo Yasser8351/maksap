@@ -76,10 +76,10 @@ class MyApp extends StatelessWidget {
 */
 
 import 'package:flutter/material.dart';
+import 'package:maksap/view/splash_screen.dart';
 
 import 'view/about_app.dart';
 import 'view/add_order.dart';
-import 'view/google_map_screen.dart';
 import 'view/jobs.dart';
 import 'view/myorder.dart';
 
@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:const GoogleMapScreen(),
+      home:const SplashScreen(),
         routes: {
         AddOrder.routeName : (ctx) =>const AddOrder(),
         MyOrder.routeName : (ctx) =>const MyOrder(),
