@@ -25,6 +25,7 @@ class _TabScreenState extends State<TabScreen> {
     setState(() {
       _currentPage = index;
     });
+   
   }
 
   @override

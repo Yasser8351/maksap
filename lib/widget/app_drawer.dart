@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:maksap/sharepref/user_share_pref.dart';
 import 'package:maksap/view/about_app.dart';
-import 'package:maksap/view/google_map_screen.dart';
 import 'package:maksap/view/myorder.dart';
 import 'package:maksap/view/tab.dart';
 
@@ -24,15 +23,12 @@ class _AppDrawerState extends State<AppDrawer> {
   void initState() {
     super.initState();
     getPhone();
+    print("_phone $_phone");
     
   }
 
   Future<void> getPhone()async{
-
      _phone = await  sharedPrefUser.getPhone();
-
-
-
   }
 
   @override
@@ -78,26 +74,14 @@ class _AppDrawerState extends State<AppDrawer> {
                                   SizedBox(
                                     width: size.width * 0.26,
                                     child: Text(
-                                     _phone,
+                                     _phone.toString(),
                                       textAlign: TextAlign.right,
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
-                                          fontFamily: 'Changa',
                                           color: Colors.white),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: size.height * 0.007,
-                                  ),
-                                  Text(
-                                    _phone,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white38,
-                                      fontFamily: 'Changa',
-                                    ),
-                                  ),
-                                ],
+                              ],
                               ),
                             ),
                            const CircleAvatar(
@@ -201,9 +185,7 @@ buildDrawerItem(
               width: MediaQuery.of(context).size.width * 0.03,
             ),
 
-            /*Image.asset('assets/drawer/$icon.png',
-              height:MediaQuery.of(context).size.width * 0.06,),*/
-
+          
             Icon(
               icon,
               color: Colors.white,

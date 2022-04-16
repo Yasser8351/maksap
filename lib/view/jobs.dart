@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:maksap/view/add_order.dart';
 import 'package:maksap/view/jobs_details.dart';
 import 'package:maksap/widget/app_drawer.dart';
 
@@ -41,8 +40,7 @@ class _JobsState extends State<Jobs> {
                   ),
           ),
           buildCardItem(title: "سباكة",icons: Icons.account_circle_outlined,context: context,ontTap: (){
-            Navigator.of(context).push(
-              MaterialPageRoute(builder: (ctx) => const JobDetails()));
+            Navigator.of(context).pushNamed(JobDetails.routeName);
           }),
           buildCardItem(title: "كهرباء",icons: Icons.account_tree_rounded,context: context,ontTap: (){
             Navigator.of(context).push(
@@ -72,7 +70,7 @@ class _JobsState extends State<Jobs> {
 buildCardItem( {required BuildContext context,
     required IconData icons,
     required String title,
-        required void Function() ontTap
+    required void Function() ontTap
 
     })
 {
@@ -81,11 +79,13 @@ buildCardItem( {required BuildContext context,
       child: ListTile(
         onTap: () {
           ontTap;
+            Navigator.of(context).pushNamed(JobDetails.routeName);
           
         },
         leading:   Icon(
               icons,
-              color: Colors.white,
+                            color: Theme.of(context).colorScheme.primary,
+
             ),
         trailing  : Padding(
           padding: const EdgeInsets.only(right: 3, left: 3),

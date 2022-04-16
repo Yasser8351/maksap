@@ -65,7 +65,7 @@ class _AddOrderState extends State<AddOrder> {
     });
     if (description.text.isNotEmpty) {
       Map<String, dynamic> orders = {
-        "userId": auth.currentUser!.uid,
+        "userId": "auth.currentUser!.uid",
         "user_phone": _userPhone,
         "description": description.text.trim(),
         "location": location.text.trim(),
@@ -178,6 +178,15 @@ class _AddOrderState extends State<AddOrder> {
                         controller: description,
                         maxLines: 4,
                         textInputAction: TextInputAction.next,
+                          decoration: InputDecoration(
+                  prefix:const Padding(
+                    padding: EdgeInsets.all(4),
+                  ),  border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                )
+                  
+                ),
                         keyboardType: TextInputType.text,
                         onFieldSubmitted: (_) {
                           FocusScope.of(context).requestFocus(locationFocus);
@@ -198,9 +207,15 @@ class _AddOrderState extends State<AddOrder> {
                         //initialValue: _initValues['phone'],
                         textAlign: TextAlign.right,
                         controller: location,
-                        decoration:const InputDecoration(
-                          labelText: "",
-                        ),
+                         decoration: InputDecoration(
+                  prefix:const Padding(
+                    padding: EdgeInsets.all(4),
+                  ),  border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                )
+                  
+                ),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.text,
                         focusNode: locationFocus,
@@ -223,10 +238,15 @@ class _AddOrderState extends State<AddOrder> {
                       TextFormField(
                         textAlign: TextAlign.right,
                         controller: time,
-                        decoration:const InputDecoration(
-                          labelText: "",
-                          hintText: "",
-                        ),
+                        decoration: InputDecoration(
+                  prefix:const Padding(
+                    padding: EdgeInsets.all(4),
+                  ),  border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                )
+                  
+                ),
                         textInputAction: TextInputAction.done,
                         keyboardType: TextInputType.text,
                         focusNode: _numberPlayerFocus,

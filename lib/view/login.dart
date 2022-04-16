@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:maksap/sharepref/user_share_pref.dart';
-import 'package:maksap/view/google_map_screen.dart';
 import 'package:maksap/view/tab.dart';
 
-import 'home.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,6 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController otpController = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
+    final _form = GlobalKey<FormState>();
+
 
   bool otpVisibility = false;
 
@@ -41,17 +41,34 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              controller: phoneController,
-              decoration: InputDecoration(
-                hintText: '0992705340 مثلا',
-                prefix: Padding(
-                  padding: EdgeInsets.all(4),
-                  //child: Text('+249'),
+                Form(
+                                      key: _form,
+              child: TextFormField(
+                
+                controller: phoneController,
+                decoration: InputDecoration(
+                  hintText: '0992705340 مثلا',
+                  prefix:const Padding(
+                    padding: EdgeInsets.all(4),
+                    //child: Text('+249'),
+                  ),  border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                )
+                  
                 ),
+                maxLength: 10,
+                keyboardType: TextInputType.phone,
+                 validator: (value) {
+                                              if (value!.isEmpty||value.length>10||value.length<10) {
+                                                return 'الرجاء ادخال رقم هاتف صحيح';
+                                              }
+                                              return null;
+                                            },
+                                            onSaved: (value) {},
+                                          
+                
               ),
-              maxLength: 10,
-              keyboardType: TextInputType.phone,
             ),
             Visibility(
               child: TextField(
@@ -61,7 +78,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefix: Padding(
                     padding: EdgeInsets.all(4),
                     child: Text(''),
-                  ),
+                  )
+                  ,  border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                )
                 ),
                 maxLength: 6,
                 keyboardType: TextInputType.number,
@@ -74,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
             MaterialButton(
               color: Colors.indigo[900],
               onPressed: () {
+              
                 if (otpVisibility) {
                 
                   verifyOTP();
@@ -100,9 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void loginWithPhone() async {
-     setState(() {
-                    _isLoading = true;
-                  });
+        saveForm();
+
+     
     auth.verifyPhoneNumber(
       phoneNumber: "+249" + phoneController.text,
       verificationCompleted: (PhoneAuthCredential credential) async {
@@ -112,6 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       verificationFailed: (FirebaseAuthException e) {
         print("e.message : ${e.message}");
+        ScaffoldMessenger.of(context).showSnackBar(
+             SnackBar(content: Text("error : ${e.message}")));
       },
       codeSent: (String verificationId, int? resendToken) {
         otpVisibility = true;
@@ -119,13 +143,14 @@ class _LoginScreenState extends State<LoginScreen> {
         setState(() {});
       },
       codeAutoRetrievalTimeout: (String verificationId) {},
-    );
+    ) ;
   setState(() {
                     _isLoading = false;
                   });
   }
 
   void verifyOTP() async {
+      saveForm();
      setState(() {
                     _isLoading = true;
                   });
@@ -152,5 +177,14 @@ class _LoginScreenState extends State<LoginScreen> {
      setState(() {
                     _isLoading = false;
                   });
+  }
+
+  void saveForm() {
+    final isValid =
+                                              _form.currentState!.validate();
+                                          if (!isValid) {
+                                            return null;
+                                          }
+                                          _form.currentState!.save();
   }
 }

@@ -38,6 +38,7 @@ class _MyOrderState extends State<MyOrder> {
                 StreamBuilder(
                     stream: FirebaseFirestore.instance
                         .collection('orders')
+                        .orderBy("time")
                         .snapshots(),
                     builder: (ctx, AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
@@ -100,7 +101,7 @@ class _MyOrderState extends State<MyOrder> {
                                    ),
                              ListTile(
                                        leading: Text(
-                                                "${data[index]["location"]}",
+                                              data[index]["status"]?  "مكتمل":"قيد المعالجة",
                                                 style: const TextStyle(
                                                     color: Colors.black, fontSize: 18),
                                               ),
@@ -123,6 +124,7 @@ class _MyOrderState extends State<MyOrder> {
                         );
                       }
                     }),
+           
               ],
             ),
           ),

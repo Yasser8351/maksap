@@ -16,15 +16,18 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   LatLng currentLocation = LatLng(-2.131910, -79.940287);
   GoogleMapController? _mapController;
   lct.Location? location;
-  late BitmapDescriptor icon;
+ BitmapDescriptor? icon;
 
 
   @override
   void initState() {
-    getIcons();
-
-    requestPerms();
     super.initState();
+     if (mounted) {
+  setState(() {
+    // update UI
+});}
+    getIcons();
+    requestPerms();
   }
 
   getLocation() async {
@@ -98,7 +101,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     marker.add(Marker(
       markerId: MarkerId("MarkerCurrent"),
       position: currentLocation,
-      icon: icon,
+      icon: icon!,
       infoWindow: InfoWindow(
         title: "Mi Ubicacion",
         snippet:
