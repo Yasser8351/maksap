@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maksap/view/jobs.dart';
+import 'package:maksap/widget/app_drawer.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:location/location.dart' as lct;
 class GoogleMapScreen extends StatefulWidget {
@@ -17,9 +18,11 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   lct.Location? location;
   late BitmapDescriptor icon;
 
+
   @override
   void initState() {
     getIcons();
+
     requestPerms();
     super.initState();
   }
@@ -110,10 +113,12 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Google Maps"),
+        title:const Text("انشاء طلب"),
       ),
+      drawer:const AppDrawer(),
       body: Stack(
         children: [
           GoogleMap(
@@ -128,21 +133,21 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
             onMapCreated: _onMapCreated,
           ),
      Padding(
-            padding: const EdgeInsets.only(bottom: 40),
+            padding: const EdgeInsets.only(bottom: 40,left: 20,right: 20),
             child: Align(
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pushNamed(Jobs.routeName);
                     },
-                    child: const SizedBox(
-                        width: 130,
+                    child:  SizedBox(
+                        width: size.width,
                         height: 50,
-                        child: Center(
+                        child:const Center(
                             child: Text(
-                          "انشاء طلب",
+                          "تحديد نوع الخدمة",
                           style: TextStyle(fontSize: 20),
-                        ))))),
+                        ),),),),),
           )
         ],
       ),

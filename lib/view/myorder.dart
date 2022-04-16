@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 
+import 'package:maksap/widget/app_drawer.dart';
+
 class MyOrder extends StatefulWidget {
   const MyOrder({Key? key}) : super(key: key);
   static const routeName = "/MyOrder";
@@ -28,6 +30,8 @@ class _MyOrderState extends State<MyOrder> {
           ),
         ),
       ),
+            drawer:const AppDrawer(),
+
          body: SizedBox(
             child: Column(
               children: [

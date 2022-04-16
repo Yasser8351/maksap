@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:maksap/sharepref/user_share_pref.dart';
 import 'package:maksap/view/google_map_screen.dart';
+import 'package:maksap/view/tab.dart';
 
 import 'home.dart';
 
@@ -132,24 +133,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
     await auth.signInWithCredential(credential).then(
       (value) {
-        print("You are logged in successfully");
-        // Fluttertoast.showToast(
-        //   msg: "You are logged in successfully",
-        //   toastLength: Toast.LENGTH_SHORT,
-        //   gravity: ToastGravity.CENTER,
-        //   timeInSecForIosWeb: 1,
-        //   backgroundColor: Colors.red,
-        //   textColor: Colors.white,
-        //   fontSize: 16.0,
-        // );
+       
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("You are logged in successfully"),duration: Duration(seconds: 1),),);
       },
     ).whenComplete(
       () {
+        SharedPrefUser().savePhone(phoneController.text);
         SharedPrefUser().login();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const GoogleMapScreen(),
+            builder: (context) =>const  TabScreen(),
           ),
         );
       },

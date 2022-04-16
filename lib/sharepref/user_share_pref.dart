@@ -12,5 +12,14 @@ class SharedPrefUser {
  _prefs = await SharedPreferences.getInstance();
    return  _prefs.getBool("login")??false;
  }
- 
+ Future<String> getPhone()async{
+   _prefs = await SharedPreferences.getInstance();
+   return ( _prefs.getString("phone")??"");
+ }
+ Future<void> savePhone(String phone)async{
+   _prefs = await SharedPreferences.getInstance();
+   await (_prefs.setString("phone",phone));
+ }
+
+
 }
