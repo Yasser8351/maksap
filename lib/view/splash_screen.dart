@@ -15,13 +15,14 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
+  bool userStatus = false;
+
   @override
   void initState() {
     super.initState();
     getUserStatus();
   }
 
-  bool userStatus = false;
 
   
   getUserStatus()async{

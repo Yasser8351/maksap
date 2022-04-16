@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:maksap/view/add_order.dart';
-
 import 'about_app.dart';
+import 'google_map_screen.dart';
 import 'myorder.dart';
 
 
@@ -18,7 +17,7 @@ class _TabScreenState extends State<TabScreen> {
   final List<Widget> _pages = [
     const AboutApp(),
     const MyOrder(),
-    const AddOrder(),
+    const GoogleMapScreen(),
 
   ];
   int _currentPage = 2;

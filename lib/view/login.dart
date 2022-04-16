@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:maksap/sharepref/user_share_pref.dart';
+import 'package:maksap/view/google_map_screen.dart';
 
 import 'home.dart';
 
@@ -114,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       },
       verificationFailed: (FirebaseAuthException e) {
-        print(e.message);
+        print("e.message : ${e.message}");
       },
       codeSent: (String verificationId, int? resendToken) {
         otpVisibility = true;
@@ -148,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Home(),
+            builder: (context) => const GoogleMapScreen(),
           ),
         );
       },

@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
 }
   */
 
-  /* 
+/* 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -75,6 +75,7 @@ class MyApp extends StatelessWidget {
 }
 */
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maksap/view/splash_screen.dart';
 
@@ -83,7 +84,9 @@ import 'view/add_order.dart';
 import 'view/jobs.dart';
 import 'view/myorder.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
