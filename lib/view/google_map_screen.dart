@@ -133,7 +133,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
             onMapCreated: _onMapCreated,
           ),
      Padding(
-            padding: const EdgeInsets.only(bottom: 40,left: 20,right: 20),
+            padding: const EdgeInsets.only(bottom: 32,left: 25,right: 25),
             child: Align(
                 alignment: Alignment.bottomCenter,
                 child: ElevatedButton(

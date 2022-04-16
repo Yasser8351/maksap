@@ -75,21 +75,13 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.indigo[900],
               onPressed: () {
                 if (otpVisibility) {
-                  setState(() {
-                    _isLoading = true;
-                  });
+                
                   verifyOTP();
-                   setState(() {
-                    _isLoading = true;
-                  });
+                  
                 } else {
-                   setState(() {
-                    _isLoading = true;
-                  });
+                   
                   loginWithPhone();
-                   setState(() {
-                    _isLoading = true;
-                  });
+                   
                 }
               },
               child:_isLoading?const Center(child:  CircularProgressIndicator(                  color: Colors.white,
@@ -108,6 +100,9 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void loginWithPhone() async {
+     setState(() {
+                    _isLoading = true;
+                  });
     auth.verifyPhoneNumber(
       phoneNumber: "+249" + phoneController.text,
       verificationCompleted: (PhoneAuthCredential credential) async {
@@ -125,9 +120,15 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
+  setState(() {
+                    _isLoading = false;
+                  });
   }
 
   void verifyOTP() async {
+     setState(() {
+                    _isLoading = true;
+                  });
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationID, smsCode: otpController.text);
 
@@ -148,5 +149,8 @@ class _LoginScreenState extends State<LoginScreen> {
         );
       },
     );
+     setState(() {
+                    _isLoading = false;
+                  });
   }
 }

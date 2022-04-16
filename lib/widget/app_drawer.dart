@@ -4,6 +4,7 @@ import 'package:maksap/sharepref/user_share_pref.dart';
 import 'package:maksap/view/about_app.dart';
 import 'package:maksap/view/google_map_screen.dart';
 import 'package:maksap/view/myorder.dart';
+import 'package:maksap/view/tab.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({Key? key,}) : super(key: key);
@@ -128,7 +129,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const GoogleMapScreen()));
+                          builder: (context) => const TabScreen()));
                 }),
             buildDrawerItem(
                 context: context,

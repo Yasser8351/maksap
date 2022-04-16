@@ -77,6 +77,7 @@ class MyApp extends StatelessWidget {
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:maksap/view/jobs_details.dart';
 import 'package:maksap/view/splash_screen.dart';
 
 import 'view/about_app.dart';
@@ -106,6 +107,7 @@ class MyApp extends StatelessWidget {
         AddOrder.routeName : (ctx) =>const AddOrder(),
         MyOrder.routeName : (ctx) =>const MyOrder(),
         Jobs.routeName : (ctx) =>const Jobs(),
+        JobDetails.routeName : (ctx) =>const JobDetails(),
         AboutApp.routeName : (ctx) =>const AboutApp()
       },
     );

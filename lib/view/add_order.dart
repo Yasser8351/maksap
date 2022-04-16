@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:maksap/sharepref/user_share_pref.dart';
 import 'package:maksap/widget/app_drawer.dart';
 
 import 'tab.dart';
@@ -36,6 +37,8 @@ class _AddOrderState extends State<AddOrder> {
   String? fileName;
   String? locationPlayer;
   String? descriptionNamePlayer;
+ late SharedPrefUser _sharedPrefUser;
+ String _userPhone ="";
 
   final _firestore = FirebaseFirestore.instance;
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -49,8 +52,11 @@ class _AddOrderState extends State<AddOrder> {
     _numberPlayerFocus.dispose();
     description.dispose();
     location.dispose();
-
     super.dispose();
+  }
+
+  Future<void> getPhone()async{
+  _userPhone = await _sharedPrefUser.getPhone();
   }
 
    void addOrder() async {
@@ -59,8 +65,8 @@ class _AddOrderState extends State<AddOrder> {
     });
     if (description.text.isNotEmpty) {
       Map<String, dynamic> orders = {
-        "userId": "auth.currentUser!.uid",
-        "user_phone": "0992705348",
+        "userId": auth.currentUser!.uid,
+        "user_phone": _userPhone,
         "description": description.text.trim(),
         "location": location.text.trim(),
         "time": time.text.trim(),
