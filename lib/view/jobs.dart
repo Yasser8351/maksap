@@ -17,7 +17,7 @@ class _JobsState extends State<Jobs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(""),
+        title: const Text("اختر الخدمة"),
         // leading: IconButton(onPressed: (){
         //   Navigator.of(context).pop();
         // }, icon:const Icon(Icons.navigate_before,color: Colors.white,size: 35,)),
@@ -28,33 +28,23 @@ class _JobsState extends State<Jobs> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            child: Text(
-                    "تحديد الخدمة",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: 20,
-                    ),
-                  ),
-          ),
-          buildCardItem(title: "سباكة",icons: Icons.account_circle_outlined,context: context,ontTap: (){
+         
+          buildCardItem(title: "خدمات الصيانة",description: "تشمل اعمال الكهرباء والسباكة والتكييف",icons: Icons.account_circle_outlined,context: context,ontTap: (){
             Navigator.of(context).pushNamed(JobDetails.routeName);
           }),
-          buildCardItem(title: "كهرباء",icons: Icons.account_tree_rounded,context: context,ontTap: (){
+          buildCardItem(title: "خدمات النظافة",description: "تشمل نظافة المنازل وغسيل وكوي الملابس",icons: Icons.account_tree_rounded,context: context,ontTap: (){
             Navigator.of(context).push(
               MaterialPageRoute(builder: (ctx) => const JobDetails()));
           }),
-          buildCardItem(title: "تكييف وتبريد",icons: Icons.ad_units_rounded,context: context,ontTap: (){
+          buildCardItem(title: "خدمات التجميل",description: "تشمل الحنة والمكياج المنزلي",icons: Icons.ad_units_rounded,context: context,ontTap: (){
             Navigator.of(context).push(
               MaterialPageRoute(builder: (ctx) => const JobDetails()));
           }),
-          buildCardItem(title: "حدادة",icons: Icons.add_road_sharp,context: context,ontTap: (){
+          buildCardItem(title: "خدمات البناء والديكور",description: "تشمل النقاشة واللياسة والنجارة والمقاولات",icons: Icons.add_road_sharp,context: context,ontTap: (){
             Navigator.of(context).push(
               MaterialPageRoute(builder: (ctx) => const JobDetails()));
           }), 
-          buildCardItem(title: "خدمات النظافة",icons: Icons.ac_unit,context: context,ontTap: (){
+          buildCardItem(title: "خدمات التدريس والتدريب",description: "اطلب مدرسك الخصوصي وتابع دروسك",icons: Icons.ac_unit,context: context,ontTap: (){
             Navigator.of(context).push(
               MaterialPageRoute(builder: (ctx) => const JobDetails()));
           }), 
@@ -70,6 +60,7 @@ class _JobsState extends State<Jobs> {
 buildCardItem( {required BuildContext context,
     required IconData icons,
     required String title,
+    required String description,
     required void Function() ontTap
 
     })
@@ -82,12 +73,12 @@ buildCardItem( {required BuildContext context,
             Navigator.of(context).pushNamed(JobDetails.routeName);
           
         },
-        leading:   Icon(
+        trailing:   Icon(
               icons,
                             color: Theme.of(context).colorScheme.primary,
 
             ),
-        trailing  : Padding(
+        title  : Padding(
           padding: const EdgeInsets.only(right: 3, left: 3),
           child: Text(
             title,
@@ -98,6 +89,15 @@ buildCardItem( {required BuildContext context,
             ),
           ),
         ),
+     
+     subtitle: Text(
+            description,
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              color: Theme.of(context).colorScheme.primary,
+              fontSize: 20,
+            ),
+          ),
       ),
     );
 }

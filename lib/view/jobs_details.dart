@@ -79,11 +79,7 @@ buildCardJobs( {required BuildContext context,
           Navigator.of(context).pushNamed(AddOrder.routeName);
           
         },
-        leading:   Icon(
-              icons,
-                            color: Theme.of(context).colorScheme.primary,
-
-            ),
+      
         trailing  : Padding(
           padding: const EdgeInsets.only(right: 3, left: 3),
           child: Text(

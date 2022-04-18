@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'loading_dialog.dart';
 
 ///DAilog to show the complete status success or failed
 ///pop automatic depend on the sec

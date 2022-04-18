@@ -76,8 +76,9 @@ class _AddOrderState extends State<AddOrder> {
       await _firestore
           .collection('orders')
           .add(orders);
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("تم اضافة طلبك بنجاح")));
+         
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //     const SnackBar(content: Text("تم اضافة طلبك بنجاح")));
       setState(() {
         _isLoading = false;
       });
