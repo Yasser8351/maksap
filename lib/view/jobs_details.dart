@@ -71,26 +71,30 @@ buildCardJobs( {required BuildContext context,
 
     })
 {
-        return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      child: ListTile(
-        onTap: () {
-          ontTap;
-          Navigator.of(context).pushNamed(AddOrder.routeName);
-          
-        },
+        return Column(
+          children: [
+            ListTile(
+            onTap: () {
+              ontTap;
+              Navigator.of(context).pushNamed(AddOrder.routeName);
+              
+            },
       
-        trailing  : Padding(
-          padding: const EdgeInsets.only(right: 3, left: 3),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              color: Theme.of(context).colorScheme.primary,
-              fontSize: 20,
+            trailing  : Padding(
+              padding: const EdgeInsets.only(right: 3, left: 3),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 20,
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+      
+    ),
+      
+      Divider()
+          ],
+        );
 }

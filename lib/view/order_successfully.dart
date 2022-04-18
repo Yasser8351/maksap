@@ -35,7 +35,8 @@ class OrderSuccessfully extends StatelessWidget {
                             Navigator.of(context).pushNamedAndRemoveUntil(MyOrder.routeName, (route) => false);
                           },
                           child:const SizedBox(
-                            width: 80,
+                            height: 55,
+                            width: 100,
                             child:  Center(
                               child: Text(
                                 'الذهاب الي طلباتي',

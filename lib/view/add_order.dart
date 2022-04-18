@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:maksap/sharepref/user_share_pref.dart';
+import 'package:maksap/view/order_successfully.dart';
 import 'package:maksap/widget/app_drawer.dart';
 
 import 'tab.dart';
@@ -86,7 +87,7 @@ class _AddOrderState extends State<AddOrder> {
       description.clear();
       location.clear();
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (ctx) =>const TabScreen()));
+          .push(MaterialPageRoute(builder: (ctx) =>const OrderSuccessfully()));
     } else {
       setState(() {
         _isLoading = false;

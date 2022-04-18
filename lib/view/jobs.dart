@@ -67,37 +67,44 @@ buildCardItem( {required BuildContext context,
 {
         return Card(
       margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      child: ListTile(
-        onTap: () {
-          ontTap;
-            Navigator.of(context).pushNamed(JobDetails.routeName);
-          
-        },
-        trailing:   Icon(
-              icons,
-                            color: Theme.of(context).colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: ListTile(
+          onTap: () {
+            ontTap;
+              Navigator.of(context).pushNamed(JobDetails.routeName);
+            
+          },
+          trailing:   Icon(
+                icons,
+                              color: Theme.of(context).colorScheme.primary,
+                              size: 45,
+
+              ),
+          title  : Padding(
+            padding: const EdgeInsets.only(right: 3, left: 3),
+            child: Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 18,
+              ),
+                          textAlign: TextAlign.right,
 
             ),
-        title  : Padding(
-          padding: const EdgeInsets.only(right: 3, left: 3),
-          child: Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              color: Theme.of(context).colorScheme.primary,
-              fontSize: 20,
-            ),
           ),
-        ),
      
      subtitle: Text(
-            description,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              color: Theme.of(context).colorScheme.primary,
-              fontSize: 20,
+              description,
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                color: Theme.of(context).colorScheme.primary,
+                fontSize: 16,
+              ),
+              textAlign: TextAlign.right,
             ),
-          ),
+        ),
       ),
     );
 }
