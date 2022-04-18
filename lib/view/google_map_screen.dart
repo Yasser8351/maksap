@@ -92,6 +92,9 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     setState(() {
       this.icon = icon;
     });
+//     .then((onValue) {
+//       myIcon = onValue;
+//     });
   }
 
 //crear Marker
